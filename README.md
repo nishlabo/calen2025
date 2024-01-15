@@ -2,6 +2,7 @@
 
 require ephem
 
-sample:
+``` Python : sample
 >> import c3
 >> print(d3.info())
+```
