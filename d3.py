@@ -89,8 +89,9 @@ class Day():
 			ss1 = Day.dayslon(dy, 90)
 			if ss[1] in [1,3] and ss1[1] == ss[1] and  i%2==0:
 				break
+			ss0, dy0=ss, dy
 			ss, dy=ss1, dy1
-		dlt = (self.d - dy).days
+		dlt = (self.d - dy0).days
 		return (dlt % 9) if ss[1]==3 else (8 - (dlt % 9))
 
 	def ind6(self):
