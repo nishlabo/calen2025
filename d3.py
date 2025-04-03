@@ -82,16 +82,17 @@ class Day():
 		return s0//deg==s1//deg, 1+(int(s1//deg)+1)%12
 
 	def ind9(self):
-		dy=self.d -datetime.timedelta(days=self.ind60())
+		dy=self.d -datetime.timedelta(days=self.ind60()) #直前の甲子日
 		ss = Day.dayslon(dy, 90)
 		for i in range(12) :
-			dy1=dy -datetime.timedelta(days=30)
+			dy1=dy -datetime.timedelta(days=60)
 			ss1 = Day.dayslon(dy, 90)
-			if ss[1] in [1,3] and ss1[1] == ss[1] and  i%2==0:
+			if ss[1] in [1,3] and ss1[1] != ss[1]:
 				break
 			ss0, dy0=ss, dy
 			ss, dy=ss1, dy1
-		dlt = (self.d - dy0).days
+		dy = dy0
+		dlt = (self.d - dy).days
 		return (dlt % 9) if ss[1]==3 else (8 - (dlt % 9))
 
 	def ind6(self):
